@@ -19,7 +19,9 @@ function Navbar(props) {
                     <Link to="/Wallet">
                         <button className="btn m-2 btn-outline-success my-2 my-sm-0" type="submit">My Wallet</button>
                     </Link>
-                    <button className="btn m-2 btn-outline-success my-2 my-sm-0" type="submit">About</button>
+                    <Link to="/About">
+                        <button className="btn m-2 btn-outline-success my-2 my-sm-0" type="submit">About</button>
+                    </Link>
                     <Link to="/create">
                         <button className="btn m-2 btn-outline-success my-2 my-sm-0" type="submit">login</button>
                     </Link>

@@ -10,6 +10,7 @@ import HomePage from "./pages/HomePage.jsx";
 import WalletPage from "./pages/WalletPage.jsx";
 import TradingPage from "./pages/TradingPage.jsx";
 import Navbar from "./pages/Navbar.jsx";
+import AboutPage from "./pages/AboutPage.jsx";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                     <Route path="/create" element={<CreateCustomer/>}/>
                     <Route path="/Wallet" element={<WalletPage/>}/>
                     <Route path="/Trading" element={<TradingPage/>}/>
+                    <Route path="/About" element={<AboutPage/>}/>
 
                     <Route path="/customersList" element={<CustomerList/>}/>
                     <Route path="*" element={<NotFound/>}/>
