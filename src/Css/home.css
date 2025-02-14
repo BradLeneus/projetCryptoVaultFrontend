@@ -1,0 +1,18 @@
+.desktop{
+    width: 1440px;
+    height: 1024px;
+    border: 1px solid #000;
+    background: #FFF;
+}
+.nav{
+    display: flex;
+    width: 1440px;
+    height: 80px;
+    padding: 8px 80px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #FDC500;
+}
