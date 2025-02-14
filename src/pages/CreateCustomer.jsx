@@ -40,7 +40,7 @@ function CreateCustomer() {
             <div className="container mt-5">
                 <div className="row justify-content-lg-start">
                     <div className="col-md-6">
-                        <h2 className="mb-4">User Information</h2>
+                        <h2 className="mb-4">Login Page</h2>
                         <form className="form-detail" onSubmit={(e) => submitNewCustomer(e)} method="post">
                             <div className="mb-3">
                                 <label htmlFor="firstname" className="form-label text-start d-block">First Name</label>
