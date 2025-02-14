@@ -6,12 +6,16 @@ import {useNavigate} from "react-router-dom";
 import error from "eslint-plugin-react/lib/util/error.js";
 
 function CreateCustomer() {
-    
+
     const [customer, setCustomer] = useState({
         fname:"",
         lname:"",
-        email:""
-    });
+        email:"",
+
+    }
+
+
+    );
 
     const changement = (e) =>{
 
@@ -43,18 +47,18 @@ function CreateCustomer() {
                         <h2 className="mb-4">Login Page</h2>
                         <form className="form-detail" onSubmit={(e) => submitNewCustomer(e)} method="post">
                             <div className="mb-3">
-                                <label htmlFor="firstname" className="form-label text-start d-block">First Name</label>
+                                <label htmlFor="firstname" className="form-label text-start d-block">Username</label>
                                 <input type="text" name="fname" className="form-control" id="firstname"
-                                       placeholder="Enter your first name"
+                                       placeholder="Username"
                                        required
                                        onChange={(e) => changement(e)}
                                 />
                             </div>
 
                             <div className="mb-3 ">
-                                <label htmlFor="lastname" className="form-label text-start d-block">Last Name</label>
+                                <label htmlFor="lastname" className="form-label text-start d-block">Password</label>
                                 <input type="text" name="lname" className="form-control" id="lastname"
-                                       placeholder="Enter your last name"
+                                       placeholder="Password"
                                        required
                                        onChange={(e) => changement(e)}
                                 />

@@ -22,7 +22,7 @@ function Navbar(props) {
                     <Link to="/About">
                         <button className="btn m-2 btn-outline-success my-2 my-sm-0" type="submit">About</button>
                     </Link>
-                    <Link to="/create">
+                    <Link to="/login">
                         <button className="btn m-2 btn-outline-success my-2 my-sm-0" type="submit">login</button>
                     </Link>
 
