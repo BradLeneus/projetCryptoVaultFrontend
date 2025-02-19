@@ -40,6 +40,7 @@ function TradingPage() {
                     <th scope="col">#</th>
                     <th scope="col">name</th>
                     <th scope="col">price</th>
+                    <th scope="col">ticker</th>
 
 
                 </tr>
@@ -53,6 +54,7 @@ function TradingPage() {
                             <th scope="row">{ligne.id}</th>
                             <th scope="row">{ligne.name}</th>
                             <th scope="row">{ligne.price}</th>
+                            <th scope="row">{ligne.ticker}</th>
 
 
                         </tr>)

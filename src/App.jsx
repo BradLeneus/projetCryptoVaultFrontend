@@ -11,6 +11,7 @@ import WalletPage from "./pages/WalletPage.jsx";
 import TradingPage from "./pages/TradingPage.jsx";
 import Navbar from "./pages/Navbar.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
+import Login from "./pages/Login.jsx";
 
 function App() {
     return (
@@ -19,13 +20,14 @@ function App() {
                 <Navbar/>
                 <Routes>
                     <Route path="/" element={<HomePage/>}/>
-                    <Route path="/login" element={<CreateCustomer/>}/>
+                    <Route path="/SignIn" element={<CreateCustomer/>}/>
                     <Route path="/Wallet" element={<WalletPage/>}/>
                     <Route path="/Trading" element={<TradingPage/>}/>
                     <Route path="/About" element={<AboutPage/>}/>
 
                     <Route path="/customersList" element={<CustomerList/>}/>
                     <Route path="*" element={<NotFound/>}/>
+                    <Route path="Login" element={<Login/>}/>
                 </Routes>
 
             </div>
