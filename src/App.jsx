@@ -4,7 +4,7 @@ import 'react';
 
 import{BrowserRouter, Routes, Route} from "react-router-dom";
 import NotFound from "./pages/NotFound.jsx";
-import CreateCustomer from "./pages/CreateCustomer.jsx";
+import SignUp from "./pages/SignUp.jsx";
 import CustomerList from "./pages/CustomerList.jsx";
 import HomePage from "./pages/HomePage.jsx";
 import WalletPage from "./pages/WalletPage.jsx";
@@ -21,7 +21,7 @@ function App() {
                 <Navbar/>
                 <Routes>
                     <Route path="/" element={<HomePage/>}/>
-                    <Route path="/SignIn" element={<CreateCustomer/>}/>
+                    <Route path="/SignUp" element={<SignUp/>}/>
                     <Route path="/Wallet" element={<WalletPage/>}/>
                     <Route path="/Trading" element={<TradingPage/>}/>
                     <Route path="/About" element={<AboutPage/>}/>
