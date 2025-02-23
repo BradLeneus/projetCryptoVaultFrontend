@@ -25,3 +25,11 @@ button{
     color: white;
     font-size: 20px;
 }
+
+.pagesName:hover{
+    color:#395CCF ;
+}
+
+button:hover{
+    background-color: #395CCF;
+}
