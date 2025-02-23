@@ -1,0 +1,27 @@
+#navBar{
+    background-color: #5BD6EE;
+}
+
+
+button{
+    width: 120px;
+    height: 40px;
+    border-radius: 90px;
+    background-color:#00222C ;
+    color: white;
+}
+
+#nomApp{
+    padding-right: 120px;
+    color: white;
+    text-align: center;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.pagesName{
+    color: white;
+    font-size: 20px;
+}
