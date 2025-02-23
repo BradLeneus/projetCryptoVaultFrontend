@@ -12,6 +12,7 @@ import TradingPage from "./pages/TradingPage.jsx";
 import Navbar from "./pages/Navbar.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import Login from "./pages/Login.jsx";
+import Footer from "./pages/Footer.jsx";
 
 function App() {
     return (
@@ -29,7 +30,7 @@ function App() {
                     <Route path="*" element={<NotFound/>}/>
                     <Route path="Login" element={<Login/>}/>
                 </Routes>
-
+                <Footer/>
             </div>
         </BrowserRouter>
 
