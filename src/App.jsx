@@ -13,6 +13,9 @@ import Navbar from "./pages/Navbar.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import Login from "./pages/Login.jsx";
 import Footer from "./pages/Footer.jsx";
+import Profile from "./pages/Profile.jsx";
+import ViewCustomer from "./pages/ViewCustomer.jsx";
+import DataComp from "./pages/DataComp.jsx";
 
 function App() {
     return (
@@ -22,13 +25,18 @@ function App() {
                 <Routes>
                     <Route path="/" element={<HomePage/>}/>
                     <Route path="/SignUp" element={<SignUp/>}/>
-                    <Route path="/Wallet" element={<WalletPage/>}/>
+                    <Route path="/Wallet" element={<WalletPage id={"getall"}/>}/>
                     <Route path="/Trading" element={<TradingPage/>}/>
                     <Route path="/About" element={<AboutPage/>}/>
+                    <Route path="/Data" element={<DataComp/>}/>
 
                     <Route path="/customersList" element={<CustomerList/>}/>
+
                     <Route path="*" element={<NotFound/>}/>
                     <Route path="Login" element={<Login/>}/>
+
+                    <Route path='/view/:id' element={<ViewCustomer />} />
+                    <Route path="/profile/:username" element={<Profile/>} />
                 </Routes>
                 <Footer/>
             </div>

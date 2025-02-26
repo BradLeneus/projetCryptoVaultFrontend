@@ -2,7 +2,7 @@ import  'react';
 import axios from "axios";
 import {useEffect, useState} from "react";
 import error from "eslint-plugin-react/lib/util/error.js";
-function TradingPage() {
+function TradingPage(props) {
 
     const charge_page = function (){
         // http://localhost:8586/oui marche pas => repositoryrest

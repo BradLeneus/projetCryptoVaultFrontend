@@ -11,7 +11,7 @@ function CustomerList() {
             // http://localhost:8586/oui marche pas => repositoryrest
             //https://jsonplaceholder.typicode.com/users marche => api normal
 
-            axios.get("http://localhost:8586/samuel/getCustomer"
+            axios.get("http://localhost:8586/samuel/getAll"
 
                 )
                 .then(response => {
@@ -52,26 +52,23 @@ function CustomerList() {
 
                 </thead>
                 <tbody>
-                {/* affiche uniquement le customer avec le bon id*/}
 
-                {/*// si on appelle getAll on fait un if pour avoir le bon
+                {
                     listUser.map((ligne, i) => (
                         <tr key={i}>
-                            <th className="p-2">{ligne.id == 1? <h2>{ligne.id}</h2> : null}</th>
-                            <th className="p-2">{ligne.id == 1? <h2>{ligne.fname}</h2> :null}</th>
-                            <th className="p-2">{ligne.id == 1? <h2>{ligne.lname}</h2> : null}</th>
-                            <th className="p-2">{ligne.id == 1? <h2>{ligne.email}</h2> : null}</th>
+                            <th scope="row">{ligne.id}</th>
+                            <th scope="row">{ligne.fname}</th>
+                            <th scope="row">{ligne.lname}</th>
+
+
 
                         </tr>)
                     )
-                */}
+                }
 
-                {/* si le Axios return deja juste un customer on l'affiche juste directement */}
-                        <tr>
-                            <th className="p-2">{listUser.id}</th>
-                            <th className="p-2">{listUser.fname}</th>
-                            <th className="p-2">{listUser.lname}</th>
-                        </tr>
+
+
+
 
 
 

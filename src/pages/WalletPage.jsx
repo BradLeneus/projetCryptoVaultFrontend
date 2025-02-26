@@ -2,18 +2,17 @@ import  'react';
 import axios from "axios";
 import {useEffect, useState} from "react";
 import error from "eslint-plugin-react/lib/util/error.js";
-function WalletPage() {
 
+
+function WalletPage(props) {
+    const sendData = function (id){
+        console.log(id)
+    }
     const charge_page = function (){
         // http://localhost:8586/oui marche pas => repositoryrest
         //https://jsonplaceholder.typicode.com/users marche => api normal
-
-        axios.get("http://localhost:8586/wallet/getall"
-
-
-
-
-        )
+        var path = "http://localhost:8586/wallet/" + props.id
+        axios.get(path)
             .then(response => {
                 setListUser(response.data)
             })
@@ -34,7 +33,12 @@ function WalletPage() {
     return (
         <div>
             <h1> TabUser</h1>
-            <table className="table table-striped">
+
+
+            {/* eslint-disable-next-line react/prop-types */}
+
+
+            <table className="">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -58,6 +62,11 @@ function WalletPage() {
                             <th scope="row">{ligne.qty}</th>
                             <th scope="row">{ligne.idcrypto.price}</th>
                             <th scope="row">{ligne.qty * ligne.idcrypto.price}</th>
+                            <th><input type={"number"} style={{width: "80px"}} name={ligne.id}/></th>
+                            <th>
+                                <button onClick={sendData(ligne.id)} className={"btn btn-primary"} name={ligne.id}>Add
+                                </button>
+                            </th>
 
 
                         </tr>)
