@@ -126,7 +126,9 @@ function WalletPage(props) {
 
                                 <th><input type={"number"} style={{width: "80px"}} name={ligne.id}/></th>
                                 <th>
-                                    <button onClick={sendData(ligne.id)} className={"btn btn-primary"}
+                                    <button onClick={() => {
+                                        sendData(ligne.id)
+                                    }} className={"btn btn-primary"}
                                             id={ligne.id}>Add
                                     </button>
                                 </th>
