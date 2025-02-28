@@ -1,0 +1,9 @@
+.tabSlogan{
+    width: 1440px;
+    height: 265px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: #5BD6EE;
+    padding-top: 66px;
+    color: white;
+}
