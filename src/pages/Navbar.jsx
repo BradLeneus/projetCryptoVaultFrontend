@@ -1,8 +1,26 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React, {useState} from 'react';
+import {Link, useNavigate} from "react-router-dom";
 import '../Css/Navbar.css'
+import * as path from "node:path";
+import Button from "bootstrap/js/src/button.js";
 
 function Navbar() {
+    const nav = useNavigate()
+    const [id, setId] = useState(0)
+    const [etat, setEtat] = useState(false)
+    const verifiePath = () =>{
+        let path = ""
+        if(id == 0){
+            setEtat(false)
+            path = "/Wallet/" + id
+        }
+        else {
+            setEtat(true)
+            path = "/Wallet/" + id;
+        }
+        nav(path)
+    }
+
     return (
         <div>
             <nav className="navbar fixed-top navbar justify-content-between" id={"navBar"}>
@@ -22,9 +40,12 @@ function Navbar() {
                         <text className={"pagesName"}>Trading Prices</text>
                     </Link>
                     &nbsp;
-                    <Link to="/Wallet">
-                      <text className={"pagesName"}>My Wallet</text>
-                    </Link>
+                    <text onClick={verifiePath}>
+                        <text className={"pagesName"}>My Wallet</text>
+
+                    </text>
+
+
                     &nbsp;
                     <Link to="/About">
                         <text className={"pagesName"}>About</text>
