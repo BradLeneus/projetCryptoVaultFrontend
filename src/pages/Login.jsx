@@ -44,7 +44,7 @@ function Login() {
     const navigateToView = function (){
         if(customerid!= null){
 
-            var path = "/View/" + customerid
+            var path = "/Wallet/" + customerid
             navigate(path)
         }
 

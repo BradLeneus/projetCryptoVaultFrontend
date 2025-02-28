@@ -32,7 +32,7 @@ function ViewCustomer() {
                     <form >
                         <div className="mb-3">
                             <label htmlFor="Name" className="form-label">
-                                Name
+                                Username
                             </label>
                             <input
                                 type={"text"}
@@ -45,7 +45,7 @@ function ViewCustomer() {
                         </div>
                         <div className="mb-3">
                             <label htmlFor="Username" className="form-label">
-                                Username
+                                Password
                             </label>
                             <input
                                 type={"text"}

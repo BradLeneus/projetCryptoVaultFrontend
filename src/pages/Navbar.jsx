@@ -33,10 +33,10 @@ function Navbar() {
 
 
                     <Link to="/Login">
-                        <button className="m-2 my-2 " type="button">Login</button>
+                        <button className="m-2 my-2 navButton " type="button">Login</button>
                     </Link>
                     <Link to="/SignUp">
-                        <button className="m-2 my-2 " type="button">Sign In</button>
+                        <button className="m-2 my-2 navButton " type="button">Sign In</button>
                     </Link>
 
 
