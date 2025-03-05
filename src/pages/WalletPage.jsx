@@ -11,9 +11,48 @@ import {useParams} from "react-router-dom";
 function WalletPage(props) {
     const {userId} = useParams()
     const [etat, setEtat] = useState(false)
+    const [wallet, setWallet] = useState({
+            idcrypto:{
+                id:""
+            },
+            qty:"",
+            customer:{
+                id:""
+            }
+    }
 
-    const sendData = function (id){
-        console.log(id)
+    );
+    const sendData = function (id, name){
+
+
+        let existingCrypto = document.getElementById(name)
+        let qty = document.getElementById("input"+id).value
+        if(qty != 0){
+
+            if(existingCrypto != ""){
+                console.log("yes")
+                setWallet( wallet.customer.id = parseInt(userId) )
+                setWallet(wallet.qty = qty)
+                setWallet(wallet.idcrypto.id= id)
+
+               axios.post("http://localhost:8586/wallet/newWallet", wallet)
+
+                console.log(wallet)
+                setWallet({
+                    idcrypto:{
+                        id:""
+                    },
+                    qty:"",
+                    customer:{
+                        id:""
+                    },
+                })
+            }
+        }
+
+
+        console.log(qty)
+
     }
     const [listCryptoUser, setListCryptoUser] = useState([])
     const charge_page = function (){
@@ -46,6 +85,7 @@ function WalletPage(props) {
     //https://jsonplaceholder.typicode.com/users marche => api normal
     const handleChange = function (){
       if(etat){
+          charge_page()
           document.getElementById("ajoutCrypto").style.display = "none";
           document.getElementById("userCrypto").style.display = "block";
           document.getElementById("changeDisplay").innerText = "ajouter cryptos"
@@ -79,19 +119,14 @@ function WalletPage(props) {
     cela permet de ne jamais avoir de ligne dupliquer*/}
                     {
                         listCryptoUser.map((ligne, i) => (
+
+                            
                             <tr key={i}>
 
-
-
-                                <th scope="row">{ligne.idcrypto.name}</th>
+                                <th id={ligne.idcrypto.name} scope="row">{ligne.idcrypto.name}</th>
                                 <th scope="row">{ligne.qty}</th>
                                 <th scope="row">{ligne.idcrypto.price}</th>
                                 <th scope="row">{ligne.qty * ligne.idcrypto.price}</th>
-
-                                <th>
-
-                                </th>
-
 
                             </tr>)
                         )
@@ -124,10 +159,10 @@ function WalletPage(props) {
                                 <th scope="row">{ligne.name}</th>
 
 
-                                <th><input type={"number"} style={{width: "80px"}} name={ligne.id}/></th>
+                                <th><input type={"number"} style={{width: "80px"}} id={"input"+ligne.id}/></th>
                                 <th>
                                     <button onClick={() => {
-                                        sendData(ligne.id)
+                                        sendData(ligne.id, ligne.name)
                                     }} className={"btn btn-primary"}
                                             id={ligne.id}>Add
                                     </button>
