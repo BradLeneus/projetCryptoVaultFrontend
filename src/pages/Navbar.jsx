@@ -3,6 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import '../Css/Navbar.css'
 import * as path from "node:path";
 import Button from "bootstrap/js/src/button.js";
+import customerList from "./CustomerList.jsx";
 
 function Navbar() {
     const nav = useNavigate()
@@ -10,13 +11,14 @@ function Navbar() {
     const [etat, setEtat] = useState(false)
     const verifiePath = () =>{
         let path = ""
-        if(id == 0){
-            setEtat(false)
-            path = "/Wallet/" + id
+        let localId = localStorage.getItem("idCustomer")
+        if(localId != null){
+
+            path = "/Wallet/" + localId
         }
         else {
-            setEtat(true)
-            path = "/Wallet/" + id;
+
+            path = "/Wallet/" + 0
         }
         nav(path)
     }

@@ -14,46 +14,43 @@ function Login() {
     const [listUser, setListUser] = useState([])
 
 
-
+    {/*
     const callTwoTimes = function (){
 
         for (let i = 0; i < 2; i++) {
            ch()
         }
     }
-    const ch = function (){
+    */}
+
+    // recupere l'id du customer si le username et le password match dans la bd
+    const getCustomer = async () =>{
         let firstname = document.getElementById("firstname").value
         let password = document.getElementById("password").value
 
         //
-        axios.get(`http://localhost:8586/samuel/getCustomer/${firstname}/${password}`
-
-        )
-
-            .then(response => {
-                setListUser(response.data);
-                customerid = response.data.id
+       const result = await axios.get(`http://localhost:8586/samuel/getCustomer/${firstname}/${password}`)
+                setListUser(result.data);
+                customerid = result.data.id
                 document.getElementById("idValue").value =customerid
-
-
-
-            })
-            .catch(error=> console.log((error)))
-
+        localStorage.setItem("idCustomer",customerid )
+        navigateToView()
     }
+
+    // si un customer est trouver, envoie vers le wallet.
     const navigateToView = function (){
+
         if(customerid!= null){
-
             var path = "/Wallet/" + customerid
-            navigate(path)
+
         }
-
+        // id de l'admin exemple
+        if(customerid == 5){
+            path = "/customersList"
+        }
+        navigate(path)
     }
-    useEffect(() => {
 
-
-
-    },[])
 
 
     // fait l'appelle des le chargement de la page
@@ -62,7 +59,7 @@ function Login() {
     //https://jsonplaceholder.typicode.com/users marche => api normal
 
     return (<div>
-            <DataComp id={2}/>
+
              <div id={"idValue"} className="container mt-5">
 
                  <div className="row justify-content-lg-start">
@@ -91,8 +88,8 @@ function Login() {
                                             </div>
 
 
-                                            <button onClick={ch} className="btn btn-primary">Submit</button>
-                                            <button onClick={navigateToView} className="btn btn-primary">VIew Profile</button>
+                                            <button onClick={getCustomer} className="btn btn-primary">Submit</button>
+
 
                                         </div>
 

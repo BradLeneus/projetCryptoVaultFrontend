@@ -5,23 +5,18 @@ import error from "eslint-plugin-react/lib/util/error.js";
 function CustomerList() {
 
 
+    const [localId, setlocalId] = useState(localStorage.getItem("idCustomer"))
+
+    const charge_page = async ()=>{
+        if(localId == 5){
+            const result = await axios.get("http://localhost:8586/samuel/getAll")
+            setListUser(result.data);
+        }
 
 
-    const charge_page = function (){
-            // http://localhost:8586/oui marche pas => repositoryrest
-            //https://jsonplaceholder.typicode.com/users marche => api normal
-
-            axios.get("http://localhost:8586/samuel/getAll"
-
-                )
-                .then(response => {
-                    setListUser(response.data);
-
-
-
-
-                })
-                .catch(error=> console.log((error)))
+    }
+    const supprimerCustomer = function (id){
+        axios.delete(`http://localhost:8586/samuel/deleteCustomer/${id}`)
     }
 
     useEffect(() => {
@@ -59,7 +54,11 @@ function CustomerList() {
                             <th scope="row">{ligne.id}</th>
                             <th scope="row">{ligne.fname}</th>
                             <th scope="row">{ligne.lname}</th>
-
+                            {ligne.id == 5 ? null : <th>
+                                <button onClick={() =>{
+                                    supprimerCustomer(ligne.id)
+                                }}>Supprimer</button>
+                            </th>}
 
 
                         </tr>)

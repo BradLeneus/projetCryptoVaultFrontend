@@ -3,27 +3,16 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import error from "eslint-plugin-react/lib/util/error.js";
 function TradingPage(props) {
-
-    const charge_page = function (){
-        // http://localhost:8586/oui marche pas => repositoryrest
-        //https://jsonplaceholder.typicode.com/users marche => api normal
-
-        axios.get("http://localhost:8586/crypto/getall"
-
-
-
-
-        )
-            .then(response => {
-                setListUser(response.data)
-            })
-            .catch(error=> console.log((error)))
+    useEffect(() => {
+        charge_page()
+    }, []);
+    const charge_page = async () =>{
+       const result = await
+        axios.get("http://localhost:8586/crypto/getall")
+        setListUser(result.data)
     }
 
-    useEffect(() => {
-        // fait l'appelle a chaque __ temps
-        let time = setInterval(charge_page,2000)
-    },[])
+
 
     const [listUser, setListUser] = useState([])
     // fait l'appelle des le chargement de la page

@@ -9,83 +9,81 @@ import {useParams} from "react-router-dom";
 
 
 function WalletPage(props) {
+    const [localId, setlocalId] = useState(localStorage.getItem("idCustomer"))
     const {userId} = useParams()
     const [etat, setEtat] = useState(false)
     const [wallet, setWallet] = useState({
             idcrypto:{
-                id:""
-            },
+                    id:""
+                },
             qty:"",
             customer:{
-                id:""
+                    id:""
+                }
             }
-    }
 
     );
     const sendData = function (id, name){
 
+        if(localId == userId){
+            let existingCrypto = document.getElementById(name)
+            let qty = document.getElementById("input"+id).value
+            if(qty != 0){
+                if(existingCrypto != ""){
+                    setWallet( wallet.customer.id = parseInt(userId) )
+                    setWallet(wallet.qty = qty)
+                    setWallet(wallet.idcrypto.id= id)
 
-        let existingCrypto = document.getElementById(name)
-        let qty = document.getElementById("input"+id).value
-        if(qty != 0){
-
-            if(existingCrypto != ""){
-                console.log("yes")
-                setWallet( wallet.customer.id = parseInt(userId) )
-                setWallet(wallet.qty = qty)
-                setWallet(wallet.idcrypto.id= id)
-
-               axios.post("http://localhost:8586/wallet/newWallet", wallet)
-
-                console.log(wallet)
-                setWallet({
-                    idcrypto:{
-                        id:""
-                    },
-                    qty:"",
-                    customer:{
-                        id:""
-                    },
-                })
+                    axios.post("http://localhost:8586/wallet/newWallet", wallet)
+                    // remet à zero sinon les élments vont se dupliquer lors du deuxieme renvoie.
+                    setWallet({
+                        idcrypto:{
+                            id:""
+                        },
+                        qty:"",
+                        customer:{
+                            id:""
+                        },
+                    })
+                }
             }
+
+
+            console.log(qty)
         }
+        // recupere les éléments à ajouter
 
-
-        console.log(qty)
 
     }
     const [listCryptoUser, setListCryptoUser] = useState([])
-    const charge_page = function (){
+    const getCryptoOfCustomer = async () =>{
 
-        axios.get(`http://localhost:8586/wallet/getbyuser/${userId}`)
-            .then(response => {
-                setListCryptoUser(response.data)
-            })
-            .catch(error=> console.log((error)))
+        if(localId == userId){
+            const result = await axios.get(`http://localhost:8586/wallet/getbyuser/${localId}`)
+            setListCryptoUser(result.data)
+
+        }
+
+
     }
-    const appelleCryptoDuUser = function (){
-
+    const getAllCrypto = async () =>{
+        const result = await
         axios.get("http://localhost:8586/crypto/getall")
-            .then(response => {
-                setListUser(response.data)
-            })
-            .catch(error=> console.log((error)))
+        setListUser(result.data)
     }
 
     useEffect(() => {
-        charge_page()
-        appelleCryptoDuUser()
+        getCryptoOfCustomer()
+        getAllCrypto()
 
     },[])
 
     const [listUser, setListUser] = useState([])
-    // fait l'appelle des le chargement de la page
 
-    // http://localhost:8586/oui marche pas => repositoryrest
-    //https://jsonplaceholder.typicode.com/users marche => api normal
+    // change le texte à afficher
     const handleChange = function (){
       if(etat){
-          charge_page()
+          getCryptoOfCustomer()
           document.getElementById("ajoutCrypto").style.display = "none";
           document.getElementById("userCrypto").style.display = "block";
           document.getElementById("changeDisplay").innerText = "ajouter cryptos"
