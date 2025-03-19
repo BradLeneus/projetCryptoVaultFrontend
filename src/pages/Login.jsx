@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import WalletPage from "./WalletPage.jsx";
 import DataComp from "./DataComp.jsx";
-
+import "../Css/Login.css"
 
 
 var customerid;
@@ -14,14 +14,8 @@ function Login() {
     const [listUser, setListUser] = useState([])
 
 
-    {/*
-    const callTwoTimes = function (){
 
-        for (let i = 0; i < 2; i++) {
-           ch()
-        }
-    }
-    */}
+
 
     // recupere l'id du customer si le username et le password match dans la bd
     const getCustomer = async () =>{
@@ -69,7 +63,7 @@ function Login() {
                                             <div className="mb-3">
                                                 <label htmlFor="firstname"
                                                        className="form-label text-start d-block">Username</label>
-                                                <input type="text" name="fname" className="form-control" id="firstname"
+                                                <input type="text" name="fname" className="form-control inputText" id="firstname"
                                                        placeholder="Username"
                                                        required
 
@@ -79,7 +73,7 @@ function Login() {
                                             <div className="mb-3 ">
                                                 <label htmlFor="lastname"
                                                        className="form-label text-start d-block">Password</label>
-                                                <input type="text" name="lname" className="form-control"
+                                                <input type="text" name="lname" className="form-control inputText"
                                                        id="password"
                                                        placeholder="Password"
                                                        required

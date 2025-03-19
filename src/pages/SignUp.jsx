@@ -6,7 +6,6 @@ import {useNavigate} from "react-router-dom";
 import error from "eslint-plugin-react/lib/util/error.js";
 
 function SignUp() {
-
     const [customer, setCustomer] = useState({
         fname:"",
         lname:"",
