@@ -15,8 +15,10 @@ function CustomerList() {
 
 
     }
-    const supprimerCustomer = function (id){
-        axios.delete(`http://localhost:8586/samuel/deleteCustomer/${id}`)
+    const supprimerCustomer = async (id) =>{
+        console.log(id)
+        await axios.delete(`http://localhost:8586/samuel/deleteCustomer/${id}`)
+        charge_page()
     }
 
     useEffect(() => {

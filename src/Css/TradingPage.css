@@ -1,0 +1,18 @@
+.imageTrading{
+    height: 40px;
+    width: 40px;
+    padding-bottom: 4px;
+}
+
+.cardItem{
+   height: 200px;
+    width: auto;
+    border-radius: 25px ;
+    border-color: #00222C;
+    padding: 5px;
+    background-color: lightgray;
+}
+.priceTag{
+    text-align: center;
+    font-size: 40px;
+}

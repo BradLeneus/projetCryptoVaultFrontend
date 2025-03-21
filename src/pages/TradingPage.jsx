@@ -1,8 +1,12 @@
 import  'react';
 import axios from "axios";
 import {useEffect, useState} from "react";
+import "../Css/TradingPage.css"
 import error from "eslint-plugin-react/lib/util/error.js";
 function TradingPage(props) {
+
+    const imglist = ["src/Icon/btc.png", "src/Icon/img1.png"]
+
     useEffect(() => {
         charge_page()
     }, []);
@@ -22,7 +26,32 @@ function TradingPage(props) {
 
     return (
         <div>
-            <h1> Crypto Price</h1>
+             
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+            {listUser.map((ligne, i) => (
+                        <div className="col container" key={i}>
+                        <div class="card h100 cardItem" >
+                        <div className="d-flex topSection">
+                        <img  src="src/Icon/img1.png"class="imageTrading card-img-top" alt="..."/>
+                            <div className="textContent">
+                                {ligne.name} <br />
+                                {ligne.ticker}
+                            </div>
+                            
+
+                        </div>
+                       
+                        <div class="card-body">
+                        <p className='priceTag'>CA${ligne.price}</p>
+                        </div>
+                        </div>
+                    </div>)
+                    )}
+                
+        </div>
+       
+            
+            {/* <h1> Crypto Price</h1>
             <table className="table table-striped">
                 <thead>
                 <tr>
@@ -30,13 +59,12 @@ function TradingPage(props) {
                     <th scope="col">name</th>
                     <th scope="col">price</th>
                     <th scope="col">ticker</th>
-
+                    <th scope="col"> Image</th>
 
                 </tr>
                 </thead>
                 <tbody>
-                {/* le i increment automatiquement
-    cela permet de ne jamais avoir de ligne dupliquer*/}
+               
                 {
                     listUser.map((ligne, i) => (
                         <tr key={i}>
@@ -44,6 +72,7 @@ function TradingPage(props) {
                             <th scope="row">{ligne.name}</th>
                             <th scope="row">{ligne.price}</th>
                             <th scope="row">{ligne.ticker}</th>
+                      <th>{ <img className='imageTrading' src={imglist[ligne.id -1]} alt="1" />}</th>
 
 
                         </tr>)
@@ -51,7 +80,7 @@ function TradingPage(props) {
                 }
 
                 </tbody>
-            </table>
+            </table> */}
 
         </div>
     );
