@@ -3,7 +3,8 @@ import {useState} from "react";
 import axios from "axios";
 
 import {useNavigate} from "react-router-dom";
-import error from "eslint-plugin-react/lib/util/error.js";
+
+
 
 function SignUp() {
     const [customer, setCustomer] = useState({
@@ -22,19 +23,40 @@ function SignUp() {
     }
 
     const navigate = useNavigate();
+    const isUsernameAlreadyTaken = async (name) =>{
+        let text = document.getElementById("labelTakenUsername")
+        const result = await axios.get(`http://localhost:8586/samuel/getByName/${name}`)
 
+        if(!result.data){
+            axios.post("http://localhost:8586/samuel/newCustomer", customer)
+                .then(() =>{
+                    text.className = "invisible"
+                    navigate("/Login")
+                }).catch((error) =>{
+                console.log(error)
+            })
+        }
+        else {
+
+            text.className = "visible"
+
+        }
+    }
     const submitNewCustomer = (e) =>{
         e.preventDefault()
+        console.log(customer.fname)
+        isUsernameAlreadyTaken(customer.fname)
+
+
+
+
+
+
         // le premier / c'est le nom du controller => RequestMapping
         // le deuxieme / c'est le mapping => PostMapping
         // le port c'est pas le port de la bd c'est le port server.port dans app.prop
 
-        axios.post("http://localhost:8586/samuel/newCustomer", customer)
-            .then(() =>{
-                navigate("/Login")
-            }).catch((error) =>{
-                console.log(error)
-        })
+
     }
 
     return (
@@ -46,6 +68,7 @@ function SignUp() {
                         <h2 className="mb-4">Sign in Page</h2>
                         <form className="form-detail" onSubmit={(e) => submitNewCustomer(e)} method="post">
                             <div className="mb-3">
+                                <label className="invisible" id="labelTakenUsername">Username Already Taken</label>
                                 <label htmlFor="firstname" className="form-label text-start d-block">Username</label>
                                 <input type="text" name="fname" className="form-control" id="firstname"
                                        placeholder="Username"
@@ -73,6 +96,7 @@ function SignUp() {
                                 />
                             </div>
                             <button type="submit" className="btn btn-primary">Submit</button>
+
                         </form>
                     </div>
                 </div>
