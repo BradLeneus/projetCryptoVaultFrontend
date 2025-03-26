@@ -49,7 +49,7 @@ function WalletPage(props) {
             }
 
 
-            console.log(qty)
+
         }
         // recupere les éléments à ajouter
 
@@ -76,7 +76,7 @@ function WalletPage(props) {
         getCryptoOfCustomer()
         getAllCrypto()
 
-    },[])
+    },[wallet])
 
     const [listUser, setListUser] = useState([])
 
