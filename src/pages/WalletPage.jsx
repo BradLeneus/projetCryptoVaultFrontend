@@ -6,12 +6,16 @@ import {getElement} from "bootstrap/js/src/util/index.js";
 import TradingPage from "./TradingPage.jsx";
 import "../Css/WalletPage.css"
 import {useParams} from "react-router-dom";
+import WalletPageChart from "./WalletPageChart.jsx";
 
 
 function WalletPage(props) {
     const [localId, setlocalId] = useState(localStorage.getItem("idCustomer"))
     const {userId} = useParams()
-    const [etat, setEtat] = useState(false)
+    const [filterList, setFilterList] = useState()
+    const [usteStateId, setUsteStateId] = useState(1)
+    const [etat, setEtat] = useState(true)
+    let array = new Array()
     const [wallet, setWallet] = useState({
             idcrypto:{
                     id:""
@@ -23,6 +27,8 @@ function WalletPage(props) {
             }
 
     );
+
+
     const sendData = function (id, name){
 
         if(localId == userId){
@@ -45,7 +51,10 @@ function WalletPage(props) {
                             id:""
                         },
                     })
+                    setUsteStateId(usteStateId + 1)
+                    window.location.reload();
                 }
+
             }
 
 
@@ -55,13 +64,14 @@ function WalletPage(props) {
 
 
     }
+
     const [listCryptoUser, setListCryptoUser] = useState([])
     const getCryptoOfCustomer = async () =>{
 
         if(localId == userId){
             const result = await axios.get(`http://localhost:8586/wallet/getbyuser/${localId}`)
             setListCryptoUser(result.data)
-
+            filterLaListe(result.data)
         }
 
 
@@ -75,8 +85,9 @@ function WalletPage(props) {
     useEffect(() => {
         getCryptoOfCustomer()
         getAllCrypto()
+        handleChange()
 
-    },[wallet])
+    },[])
 
     const [listUser, setListUser] = useState([])
 
@@ -95,32 +106,43 @@ function WalletPage(props) {
       }
       setEtat(!etat)
     }
+
+    const filterLaListe = (liste) =>{
+
+        liste.forEach(myFunction)
+        array[0] = ["Titre", "graph"]
+
+    }
+    function myFunction(item, index) {
+        array[index + 1] = [item.idcrypto.name, item.qty * item.idcrypto.price]
+
+
+    }
     return (
         <div>
+
+                <WalletPageChart listUser = {array}/>
+
+
             <button id="changeDisplay" onClick={handleChange}>ajouter cryptos</button>
+
             <div id="userCrypto">
                 <h1> TabUser</h1>
-                <table className="">
+                <table className="table p-2">
                     <thead>
                     <tr>
-
-
+                        <th>#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Qty</th>
                         <th scope="col">Prix unitaire</th>
                         <th scope="col">$USD</th>
-
                     </tr>
                     </thead>
                     <tbody>
-                    {/* le i increment automatiquement
-    cela permet de ne jamais avoir de ligne dupliquer*/}
                     {
                         listCryptoUser.map((ligne, i) => (
-
-                            
                             <tr key={i}>
-
+                                <th>{i + 1}</th>
                                 <th id={ligne.idcrypto.name} scope="row">{ligne.idcrypto.name}</th>
                                 <th scope="row">{ligne.qty}</th>
                                 <th scope="row">{ligne.idcrypto.price}</th>
@@ -131,33 +153,25 @@ function WalletPage(props) {
                     }
                     </tbody>
                 </table>
+
             </div>
             <div id="ajoutCrypto">
-
                 <table className="">
                     <thead>
                     <tr>
-
-                        <th scope="col">Id</th>
-                        <th scope="col">price</th>
                         <th scope="col">name</th>
-
-
                     </tr>
                     </thead>
                     <tbody>
-                    {/* le i increment automatiquement
-    cela permet de ne jamais avoir de ligne dupliquer*/}
                     {
                         listUser.map((ligne, i) => (
                             <tr key={i}>
 
-                                <th scope="row">{ligne.id}</th>
-                                <th scope="row">{ligne.price}</th>
+
                                 <th scope="row">{ligne.name}</th>
 
 
-                                <th><input type={"number"} style={{width: "80px"}} id={"input"+ligne.id}/></th>
+                                <th><input type={"number"} style={{width: "80px"}} id={"input" + ligne.id}/></th>
                                 <th>
                                     <button onClick={() => {
                                         sendData(ligne.id, ligne.name)

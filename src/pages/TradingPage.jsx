@@ -26,61 +26,30 @@ function TradingPage(props) {
 
     return (
         <div>
-             
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-            {listUser.map((ligne, i) => (
-                        <div className="col container" key={i}>
-                        <div class="card h100 cardItem" >
-                        <div className="d-flex topSection">
-                        <img  src="src/Icon/img1.png"class="imageTrading card-img-top" alt="..."/>
-                            <div className="textContent">
-                                {ligne.name} <br />
-                                {ligne.ticker}
-                            </div>
-                            
 
-                        </div>
-                       
-                        <div class="card-body">
-                        <p className='priceTag'>CA${ligne.price}</p>
-                        </div>
-                        </div>
+            <div className="AllCryptoBox row row-cols-1 row-cols-md-3 g-4">
+            {listUser.map((ligne, i) => (
+                        <div className="col OneBox" key={i}>
+                            <div className="card smallBox" >
+                                <div className="d-flex topSection">
+                                     <img  src="src/Icon/img1.png"className="imageTrading card-img-top" alt="..."/>
+                                     <div className="textContent">
+                                    {ligne.name} <br />
+                                    {ligne.ticker}
+                                    </div>
+                                </div>
+
+                                <div className="card-body">
+                                    <p className='priceTag'>CA${ligne.price}</p>
+                                </div>
+                            </div>
                     </div>)
                     )}
-                
+
         </div>
-       
-            
-            {/* <h1> Crypto Price</h1>
-            <table className="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">name</th>
-                    <th scope="col">price</th>
-                    <th scope="col">ticker</th>
-                    <th scope="col"> Image</th>
-
-                </tr>
-                </thead>
-                <tbody>
-               
-                {
-                    listUser.map((ligne, i) => (
-                        <tr key={i}>
-                            <th scope="row">{ligne.id}</th>
-                            <th scope="row">{ligne.name}</th>
-                            <th scope="row">{ligne.price}</th>
-                            <th scope="row">{ligne.ticker}</th>
-                      <th>{ <img className='imageTrading' src={imglist[ligne.id -1]} alt="1" />}</th>
 
 
-                        </tr>)
-                    )
-                }
 
-                </tbody>
-            </table> */}
 
         </div>
     );

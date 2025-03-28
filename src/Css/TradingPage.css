@@ -6,7 +6,7 @@
 
 .cardItem{
    height: 200px;
-    width: auto;
+    width: 200px;
     border-radius: 25px ;
     border-color: #00222C;
     padding: 5px;
@@ -15,4 +15,10 @@
 .priceTag{
     text-align: center;
     font-size: 40px;
+}
+.AllCryptoBox{
+    margin-top: 200px;
+}
+.smallBox{
+height: 100px;
 }
