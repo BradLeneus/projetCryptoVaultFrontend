@@ -6,16 +6,9 @@
     padding-top: 120px;
     display: flex;
     justify-content: center;
-    border-radius: 38px;
-    background: #5BD6EE;
-
 }
 
-.mt-5{
-    margin-top: 9rem !important;
-}
-
-#h2Login{
+#h2SignUp{
     margin-bottom: 20px;
     text-align: center;
     color: white;
