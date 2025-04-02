@@ -20,25 +20,30 @@ import DataComp from "./pages/DataComp.jsx";
 function App() {
     return (
         <BrowserRouter>
+
             <div>
                 <Navbar/>
-                <Routes>
-                    <Route path="/" element={<HomePage/>}/>
-                    <Route path="/SignUp" element={<SignUp/>}/>
-                    <Route path="/Wallet/:userId" element={<WalletPage/>}/>
-                    {/* id={}*/}
-                    <Route path="/Trading" element={<TradingPage/>}/>
-                    <Route path="/About" element={<AboutPage/>}/>
-                    <Route path="/Data" element={<DataComp/>}/>
+                <div>
+                    <Routes>
+                        <Route path="/" element={<HomePage/>}/>
+                        <Route path="/SignUp" element={<SignUp/>}/>
+                        <Route path="/Wallet" element={<WalletPage/>}/>
+                        {/* id={}*/}
+                        <Route path="/Trading" element={<TradingPage/>}/>
+                        <Route path="/About" element={<AboutPage/>}/>
+                        <Route path="/Data" element={<DataComp/>}/>
 
-                    <Route path="/customersList" element={<CustomerList/>}/>
+                        <Route path="/customersList" element={<CustomerList/>}/>
 
-                    <Route path="*" element={<NotFound/>}/>
-                    <Route path="Login" element={<Login/>}/>
+                        <Route path="*" element={<NotFound/>}/>
+                        <Route path="Login" element={<Login/>}/>
 
-                    <Route path='/view/:id' element={<ViewCustomer />} />
-                    <Route path="/profile/:username" element={<Profile/>} />
-                </Routes>
+                        <Route path='/view/:id' element={<ViewCustomer />} />
+                        <Route path="/profile/:username" element={<Profile/>} />
+                    </Routes>
+                </div>
+
+
                 <Footer/>
             </div>
         </BrowserRouter>

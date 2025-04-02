@@ -28,13 +28,8 @@ function SignUp() {
         const result = await axios.get(`http://localhost:8586/samuel/getByName/${name}`)
 
         if(!result.data){
-            axios.post("http://localhost:8586/samuel/newCustomer", customer)
-                .then(() =>{
-                    text.className = "invisible"
-                    navigate("/Login")
-                }).catch((error) =>{
-                console.log(error)
-            })
+            createCustomer()
+            text.className = "invisible"
         }
         else {
 
@@ -42,23 +37,24 @@ function SignUp() {
 
         }
     }
+    const createCustomer = () => {
+        axios.post("http://localhost:8586/samuel/newCustomer", customer)
+            .then(() =>{
+                navigate("/Login")
+            }).catch((error) =>{
+            console.log(error)
+        })
+    }
+
     const submitNewCustomer = (e) =>{
         e.preventDefault()
         console.log(customer.fname)
         isUsernameAlreadyTaken(customer.fname)
 
-
-
-
-
-
         // le premier / c'est le nom du controller => RequestMapping
         // le deuxieme / c'est le mapping => PostMapping
         // le port c'est pas le port de la bd c'est le port server.port dans app.prop
-
-
     }
-
     return (
         <div>
 
@@ -68,15 +64,14 @@ function SignUp() {
                         <h2 className="mb-4">Sign in Page</h2>
                         <form className="form-detail" onSubmit={(e) => submitNewCustomer(e)} method="post">
                             <div className="mb-3">
-                                <label className="invisible" id="labelTakenUsername">Username Already Taken</label>
-                                <label htmlFor="firstname" className="form-label text-start d-block">Username</label>
+
+                                <label htmlFor="firstname" className="form-label text-start d-block">Username <text className="invisible" id="labelTakenUsername">Already Taken</text></label>
                                 <input type="text" name="fname" className="form-control" id="firstname"
                                        placeholder="Username"
                                        required
                                        onChange={(e) => changement(e)}
                                 />
                             </div>
-
                             <div className="mb-3 ">
                                 <label htmlFor="lastname" className="form-label text-start d-block">Password</label>
                                 <input type="text" name="lname" className="form-control" id="lastname"
@@ -85,8 +80,6 @@ function SignUp() {
                                        onChange={(e) => changement(e)}
                                 />
                             </div>
-
-
                             <div className="mb-3">
                                 <label htmlFor="email" className="form-label text-start d-block">Email</label>
                                 <input type="email" name="email" className="form-control" id="email"

@@ -11,10 +11,12 @@ import WalletPageChart from "./WalletPageChart.jsx";
 
 function WalletPage(props) {
     const [localId, setlocalId] = useState(localStorage.getItem("idCustomer"))
-    const {userId} = useParams()
-    const [filterList, setFilterList] = useState()
-    const [usteStateId, setUsteStateId] = useState(1)
+    //ancienne methode
+    //const {userId} = useParams()
+    const [filterList, setFilterList] = useState([])
+    const [walletId, setWalletId] = useState(1)
     const [etat, setEtat] = useState(true)
+    const [listUser, setListUser] = useState([])
     let array = new Array()
     const [wallet, setWallet] = useState({
             idcrypto:{
@@ -31,12 +33,12 @@ function WalletPage(props) {
 
     const sendData = function (id, name){
 
-        if(localId == userId){
+
             let existingCrypto = document.getElementById(name)
             let qty = document.getElementById("input"+id).value
             if(qty != 0){
                 if(existingCrypto != ""){
-                    setWallet( wallet.customer.id = parseInt(userId) )
+                    setWallet( wallet.customer.id = parseInt(localId) )
                     setWallet(wallet.qty = qty)
                     setWallet(wallet.idcrypto.id= id)
 
@@ -51,15 +53,16 @@ function WalletPage(props) {
                             id:""
                         },
                     })
-                    setUsteStateId(usteStateId + 1)
-                    window.location.reload();
+                    setWalletId(walletId + 1)
+                    // window.location.reload();
+
                 }
 
             }
 
 
 
-        }
+
         // recupere les éléments à ajouter
 
 
@@ -68,10 +71,12 @@ function WalletPage(props) {
     const [listCryptoUser, setListCryptoUser] = useState([])
     const getCryptoOfCustomer = async () =>{
 
-        if(localId == userId){
+        if(localId != null){
             const result = await axios.get(`http://localhost:8586/wallet/getbyuser/${localId}`)
             setListCryptoUser(result.data)
             filterLaListe(result.data)
+            setFilterList(array)
+
         }
 
 
@@ -80,21 +85,23 @@ function WalletPage(props) {
         const result = await
         axios.get("http://localhost:8586/crypto/getall")
         setListUser(result.data)
+
     }
 
     useEffect(() => {
         getCryptoOfCustomer()
         getAllCrypto()
-        handleChange()
 
-    },[])
 
-    const [listUser, setListUser] = useState([])
+    },[listCryptoUser])
+
+
 
     // change le texte à afficher
     const handleChange = function (){
+        console.log(filterList)
       if(etat){
-          getCryptoOfCustomer()
+
           document.getElementById("ajoutCrypto").style.display = "none";
           document.getElementById("userCrypto").style.display = "block";
           document.getElementById("changeDisplay").innerText = "ajouter cryptos"
@@ -112,6 +119,10 @@ function WalletPage(props) {
         liste.forEach(myFunction)
         array[0] = ["Titre", "graph"]
 
+
+
+
+
     }
     function myFunction(item, index) {
         array[index + 1] = [item.idcrypto.name, item.qty * item.idcrypto.price]
@@ -121,7 +132,7 @@ function WalletPage(props) {
     return (
         <div>
 
-                <WalletPageChart listUser = {array}/>
+                <WalletPageChart listUser = {filterList}/>
 
 
             <button id="changeDisplay" onClick={handleChange}>ajouter cryptos</button>

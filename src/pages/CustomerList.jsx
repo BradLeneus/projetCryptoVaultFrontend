@@ -6,8 +6,9 @@ function CustomerList() {
 
 
     const [localId, setlocalId] = useState(localStorage.getItem("idCustomer"))
-
+    const [listUser, setListUser] = useState([])
     const charge_page = async ()=>{
+        //id 5 est un admin
         if(localId == 5){
             const result = await axios.get("http://localhost:8586/samuel/getAll")
             setListUser(result.data);
@@ -16,21 +17,15 @@ function CustomerList() {
 
     }
     const supprimerCustomer = async (id) =>{
-        console.log(id)
+
         await axios.delete(`http://localhost:8586/samuel/deleteCustomer/${id}`)
-        charge_page()
+
     }
 
     useEffect(() => {
         // fait l'appelle a chaque __ temps
         charge_page()
-    },[])
-
-    const [listUser, setListUser] = useState([])
-    // fait l'appelle des le chargement de la page
-
-    // http://localhost:8586/oui marche pas => repositoryrest
-    //https://jsonplaceholder.typicode.com/users marche => api normal
+    },[listUser])
 
     return (
         <div>
@@ -42,14 +37,9 @@ function CustomerList() {
                     <th scope="col">fame</th>
                     <th scope="col">lame</th>
                     <th scope="col">Email</th>
-
-
                 </tr>
-
-
                 </thead>
                 <tbody>
-
                 {
                     listUser.map((ligne, i) => (
                         <tr key={i}>
@@ -61,21 +51,10 @@ function CustomerList() {
                                     supprimerCustomer(ligne.id)
                                 }}>Supprimer</button>
                             </th>}
-
-
-                        </tr>)
-                    )
+                        </tr>))
                 }
-
-
-
-
-
-
-
                 </tbody>
             </table>
-
         </div>
     );
 }

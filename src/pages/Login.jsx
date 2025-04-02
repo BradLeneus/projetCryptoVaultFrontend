@@ -36,8 +36,9 @@ function Login() {
 
         if(customerid!= null){
             localStorage.setItem("idCustomer",customerid )
-            var path = "/Wallet/" + customerid
-
+            // ancienne methode
+            //var path = "/Wallet/" + customerid
+            var path = "/Wallet"
         }
         // id de l'admin exemple
         if(customerid == 5){
