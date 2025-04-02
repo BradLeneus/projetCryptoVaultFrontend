@@ -14,56 +14,91 @@ function WalletPage(props) {
     //ancienne methode
     //const {userId} = useParams()
     const [filterList, setFilterList] = useState([])
-    const [walletId, setWalletId] = useState(1)
-    const [etat, setEtat] = useState(true)
+
+    const [etat, setEtat] = useState(false)
     const [listUser, setListUser] = useState([])
     let array = new Array()
     const [wallet, setWallet] = useState({
             idcrypto:{
                     id:""
-                },
+                    },
             qty:"",
             customer:{
                     id:""
-                }
-            }
+                    }
+    }
 
     );
 
 
+
     const sendData = function (id, name){
 
+        let existingCrypto = document.getElementById(name)
+        let qty = document.getElementById("input"+id).value
+        if(qty != 0){
+            if(existingCrypto != ""){
+                if(listCryptoUser[id -1] != null){
+                    if(qty <0){
+                        if(listCryptoUser[id -1].qty + parseInt(qty)  >= 0 ){
+                            setWallet( wallet.customer.id = parseInt(localId) )
+                            setWallet(wallet.qty = listCryptoUser[id - 1].qty + parseInt(qty))
+                            setWallet(wallet.idcrypto.id= id)
+                            axios.post("http://localhost:8586/wallet/newWallet", wallet)
+                            // remet à zero sinon les élments vont se dupliquer lors du deuxieme renvoie.
+                            setWallet({
+                                idcrypto:{
+                                    id:""
+                                },
+                                qty:"",
+                                customer:{
+                                    id:""
+                                },
+                            })
 
-            let existingCrypto = document.getElementById(name)
-            let qty = document.getElementById("input"+id).value
-            if(qty != 0){
-                if(existingCrypto != ""){
-                    setWallet( wallet.customer.id = parseInt(localId) )
-                    setWallet(wallet.qty = qty)
-                    setWallet(wallet.idcrypto.id= id)
 
-                    axios.post("http://localhost:8586/wallet/newWallet", wallet)
-                    // remet à zero sinon les élments vont se dupliquer lors du deuxieme renvoie.
-                    setWallet({
-                        idcrypto:{
-                            id:""
-                        },
-                        qty:"",
-                        customer:{
-                            id:""
-                        },
-                    })
-                    setWalletId(walletId + 1)
-                    // window.location.reload();
+                            // window.location.reload();
 
+                        }
+                    }
+                    else {
+                        setWallet( wallet.customer.id = parseInt(localId) )
+                        setWallet(wallet.qty = listCryptoUser[id - 1].qty + parseInt(qty))
+                        setWallet(wallet.idcrypto.id= id)
+                        axios.post("http://localhost:8586/wallet/newWallet", wallet)
+                        // remet à zero sinon les élments vont se dupliquer lors du deuxieme renvoie.
+                        setWallet({
+                            idcrypto:{
+                                id:""
+                            },
+                            qty:"",
+                            customer:{
+                                id:""
+                            },
+                        })
+                    }
+                }
+                else {
+                    if(qty >0){
+                        setWallet( wallet.customer.id = parseInt(localId) )
+                        setWallet(wallet.qty = qty)
+                        setWallet(wallet.idcrypto.id= id)
+                        axios.post("http://localhost:8586/wallet/newWallet", wallet)
+                        // remet à zero sinon les élments vont se dupliquer lors du deuxieme renvoie.
+                        setWallet({
+                            idcrypto:{
+                                id:""
+                            },
+                            qty:"",
+                            customer:{
+                                id:""
+                            },
+                        })
+                    }
                 }
 
             }
-
-
-
-
-        // recupere les éléments à ajouter
+        }
 
 
     }
@@ -90,16 +125,21 @@ function WalletPage(props) {
 
     useEffect(() => {
         getCryptoOfCustomer()
-        getAllCrypto()
 
 
     },[listCryptoUser])
+    useEffect(() => {
+
+        getAllCrypto()
+
+
+    },[])
 
 
 
     // change le texte à afficher
     const handleChange = function (){
-        console.log(filterList)
+
       if(etat){
 
           document.getElementById("ajoutCrypto").style.display = "none";
@@ -186,6 +226,8 @@ function WalletPage(props) {
                                 <th>
                                     <button onClick={() => {
                                         sendData(ligne.id, ligne.name)
+
+
                                     }} className={"btn btn-primary"}
                                             id={ligne.id}>Add
                                     </button>
