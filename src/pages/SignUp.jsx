@@ -26,7 +26,7 @@ function SignUp() {
     const navigate = useNavigate();
     const isUsernameAlreadyTaken = async (name) =>{
         let text = document.getElementById("labelTakenUsername")
-        const result = await axios.get(`http://localhost:8586/samuel/getByName/${name}`)
+        const result = await axios.get(`http://localhost:8586/Customer/getByName/${name}`)
 
         if(!result.data){
             createCustomer()
@@ -39,7 +39,7 @@ function SignUp() {
         }
     }
     const createCustomer = () => {
-        axios.post("http://localhost:8586/samuel/newCustomer", customer)
+        axios.post("http://localhost:8586/Customer/newCustomer", customer)
             .then(() =>{
                 navigate("/Login")
             }).catch((error) =>{

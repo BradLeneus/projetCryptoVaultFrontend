@@ -24,7 +24,7 @@ function Login() {
         let password = document.getElementById("password").value
 
 
-       const result = await axios.get(`http://localhost:8586/samuel/getCustomer/${firstname}/${password}`)
+       const result = await axios.get(`http://localhost:8586/Customer/getCustomer/${firstname}/${password}`)
                 setListUser(result.data);
                 customerid = result.data.id
                 document.getElementById("idValue").value =customerid
