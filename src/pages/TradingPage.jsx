@@ -5,7 +5,7 @@ import "../Css/TradingPage.css"
 import error from "eslint-plugin-react/lib/util/error.js";
 function TradingPage(props) {
 
-    const imglist = ["src/Icon/btc.png", "src/Icon/ethereum.png","src/Icon/bittensorTao.png","src/Icon/solana.png","src/Icon/shibaInu.png"]
+
     const [listCrypto, setListUser] = useState([])
     useEffect(() => {
         charge_page()
@@ -19,6 +19,7 @@ function TradingPage(props) {
 
 
 
+
     // fait l'appelle des le chargement de la page
 
     // http://localhost:8586/oui marche pas => repositoryrest
@@ -26,14 +27,14 @@ function TradingPage(props) {
 
     return (
         <div>
-
+            <button>sort by price</button>
             <div className="AllCryptoBox row row-cols-1 row-cols-md-3 g-4">
             {listCrypto.map((ligne, i) => (
 
                         <div className="col OneBox" key={i}>
                             <div className="card smallBox" >
                                 <div className="d-flex topSection">
-                                     <img  src={imglist[ligne.id -1]} className="imageTrading card-img-top" alt="..."/>
+                                     <img  src={"src/Icon/" + ligne.name + ".png"} className="imageTrading card-img-top" alt="..."/>
                                      <div className="textContent">
 
                                     {ligne.name} <br />
