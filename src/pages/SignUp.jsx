@@ -59,7 +59,7 @@ function SignUp() {
     return (
         <div>
 
-            <div className="container mt-5">
+            <div className="container inscription mt-5">
                 <div className="row justify-content-lg-start">
                     <div className={"logoCryptoVault"}>
                     <svg width="180" height="56" viewBox="0 0 180 56" fill="none" xmlns="http://www.w3.org/2000/svg">

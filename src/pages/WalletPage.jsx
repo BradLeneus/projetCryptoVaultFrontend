@@ -5,18 +5,19 @@ import error from "eslint-plugin-react/lib/util/error.js";
 import {getElement} from "bootstrap/js/src/util/index.js";
 import TradingPage from "./TradingPage.jsx";
 import "../Css/WalletPage.css"
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import WalletPageChart from "./WalletPageChart.jsx";
 
 
 function WalletPage(props) {
     const [localId, setlocalId] = useState(localStorage.getItem("idCustomer"))
-    //ancienne methode
-    //const {userId} = useParams()
     const [filterList, setFilterList] = useState([])
-
+    const nav = useNavigate();
     const [etat, setEtat] = useState(false)
     const [listUser, setListUser] = useState([])
+    const [totalValueTempo, setTotalValueTempo] = useState(0)
+    let totalValueLet = 0
+    const [listCryptoUser, setListCryptoUser] = useState([])
     let array = new Array()
     const [wallet, setWallet] = useState({
             idcrypto:{
@@ -103,7 +104,7 @@ function WalletPage(props) {
 
     }
 
-    const [listCryptoUser, setListCryptoUser] = useState([])
+
     const getCryptoOfCustomer = async () =>{
 
         if(localId != null){
@@ -112,6 +113,13 @@ function WalletPage(props) {
             filterLaListe(result.data)
             setFilterList(array)
 
+
+
+
+
+        }
+        else {
+            nav("/Login")
         }
 
 
@@ -125,6 +133,8 @@ function WalletPage(props) {
 
     useEffect(() => {
         getCryptoOfCustomer()
+            totalValueLet = 0
+            listCryptoUser.forEach(myFunctionTotalValue)
 
 
     },[listCryptoUser])
@@ -145,11 +155,15 @@ function WalletPage(props) {
           document.getElementById("ajoutCrypto").style.display = "none";
           document.getElementById("userCrypto").style.display = "block";
           document.getElementById("changeDisplay").innerText = "ajouter cryptos"
+
+          totalValueLet = 0
+          listCryptoUser.forEach(myFunctionTotalValue)
       }
       else {
           document.getElementById("ajoutCrypto").style.display = "block";
           document.getElementById("userCrypto").style.display = "none";
           document.getElementById("changeDisplay").innerText = "voir vos cryptos"
+
       }
       setEtat(!etat)
     }
@@ -159,21 +173,22 @@ function WalletPage(props) {
         liste.forEach(myFunction)
         array[0] = ["Titre", "graph"]
 
-
-
-
-
     }
     function myFunction(item, index) {
         array[index + 1] = [item.idcrypto.name, item.qty * item.idcrypto.price]
 
+    }
+
+    function myFunctionTotalValue(item, index) {
+        totalValueLet += item.qty * item.idcrypto.price
+
+        setTotalValueTempo(totalValueLet)
 
     }
+
     return (
         <div>
-
                 <WalletPageChart listUser = {filterList}/>
-
 
             <button id="changeDisplay" onClick={handleChange}>ajouter cryptos</button>
 
@@ -199,12 +214,13 @@ function WalletPage(props) {
                                 <th scope="row">{ligne.idcrypto.price}</th>
                                 <th scope="row">{ligne.qty * ligne.idcrypto.price}</th>
 
+
                             </tr>)
                         )
                     }
                     </tbody>
                 </table>
-
+                <p style={{textAlign:"center"}}>Votre valeur total: {totalValueTempo}</p>
             </div>
             <div id="ajoutCrypto">
                 <table className="">

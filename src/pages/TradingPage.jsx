@@ -5,7 +5,8 @@ import "../Css/TradingPage.css"
 import error from "eslint-plugin-react/lib/util/error.js";
 function TradingPage(props) {
 
-
+    const [isAscPrice, setIsAscPrice] = useState(false)
+    const [isAscName, setIsAscName] = useState(false)
     const [listCrypto, setListUser] = useState([])
     useEffect(() => {
         charge_page()
@@ -15,7 +16,19 @@ function TradingPage(props) {
         axios.get("http://localhost:8586/crypto/getall")
         setListUser(result.data)
     }
+    const getByPrice = async () =>{
 
+
+        const resutl = await axios.get(`http://localhost:8586/crypto/getAllByPrice/${isAscPrice}`)
+        setListUser(resutl.data)
+        setIsAscPrice(!isAscPrice)
+
+    }
+    const getByName = async () =>{
+        const resutl = await axios.get(`http://localhost:8586/crypto/getAllByName/${isAscName}`)
+        setListUser(resutl.data)
+        setIsAscName(!isAscName)
+    }
 
 
 
@@ -27,7 +40,8 @@ function TradingPage(props) {
 
     return (
         <div>
-            <button>sort by price</button>
+            <button onClick={getByPrice}>sort by price</button>
+            <button onClick={getByName}>sort by name</button>
             <div className="AllCryptoBox row row-cols-1 row-cols-md-3 g-4">
             {listCrypto.map((ligne, i) => (
 

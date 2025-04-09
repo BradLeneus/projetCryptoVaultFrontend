@@ -56,7 +56,7 @@ function Login() {
 
         <div>
 
-            <div id={"idValue"} className="container mt-5">
+            <div id={"idValue"} className="container inscription mt-5">
 
                 <div className="row justify-content-lg-start">
 

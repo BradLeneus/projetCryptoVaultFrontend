@@ -96,6 +96,10 @@ function Navbar() {
                     </Link>
                     &nbsp;
 
+                    <Link to="/Song">
+                        <text className={"pagesName"}>Songs</text>
+                    </Link>
+                    &nbsp;
                     {localStorage.getItem("idCustomer") != null ? <button className="navButton" onClick={SupprimerId}>logout</button> :<Link to="/Login">
                         <button className="m-2 my-2 navButton " type="button">Login</button>
                     </Link>}
