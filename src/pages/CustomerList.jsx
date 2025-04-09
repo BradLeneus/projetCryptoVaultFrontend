@@ -10,7 +10,7 @@ function CustomerList() {
     const charge_page = async ()=>{
         //id 5 est un admin
         if(localId == 5){
-            const result = await axios.get("http://localhost:8586/samuel/getAll")
+            const result = await axios.get("http://localhost:8586/Customer/getAll")
             setListUser(result.data);
         }
 
@@ -18,12 +18,12 @@ function CustomerList() {
     }
     const supprimerCustomer = async (id) =>{
 
-        await axios.delete(`http://localhost:8586/samuel/deleteCustomer/${id}`)
+        await axios.delete(`http://localhost:8586/Customer/deleteCustomer/${id}`)
 
     }
 
     useEffect(() => {
-        // fait l'appelle a chaque __ temps
+
         charge_page()
     },[listUser])
 
