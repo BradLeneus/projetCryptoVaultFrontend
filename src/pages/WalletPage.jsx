@@ -43,7 +43,7 @@ function WalletPage(props) {
                     if(qty <0){
                         if(listCryptoUser[id -1].qty + parseInt(qty)  >= 0 ){
                             setWallet( wallet.customer.id = parseInt(localId) )
-                            setWallet(wallet.qty = listCryptoUser[id - 1].qty + parseInt(qty))
+                            setWallet(wallet.qty = listCryptoUser[id - 1].qty + parseFloat(qty))
                             setWallet(wallet.idcrypto.id= id)
                             axios.post("http://localhost:8586/wallet/newWallet", wallet)
                             // remet à zero sinon les élments vont se dupliquer lors du deuxieme renvoie.
@@ -64,7 +64,7 @@ function WalletPage(props) {
                     }
                     else {
                         setWallet( wallet.customer.id = parseInt(localId) )
-                        setWallet(wallet.qty = listCryptoUser[id - 1].qty + parseInt(qty))
+                        setWallet(wallet.qty = listCryptoUser[id - 1].qty + parseFloat(qty))
                         setWallet(wallet.idcrypto.id= id)
                         axios.post("http://localhost:8586/wallet/newWallet", wallet)
                         // remet à zero sinon les élments vont se dupliquer lors du deuxieme renvoie.
@@ -82,7 +82,7 @@ function WalletPage(props) {
                 else {
                     if(qty >0){
                         setWallet( wallet.customer.id = parseInt(localId) )
-                        setWallet(wallet.qty = qty)
+                        setWallet(wallet.qty = parseFloat(qty))
                         setWallet(wallet.idcrypto.id= id)
                         axios.post("http://localhost:8586/wallet/newWallet", wallet)
                         // remet à zero sinon les élments vont se dupliquer lors du deuxieme renvoie.
@@ -211,8 +211,8 @@ function WalletPage(props) {
                                 <th>{i + 1}</th>
                                 <th id={ligne.idcrypto.name} scope="row">{ligne.idcrypto.name}</th>
                                 <th scope="row">{ligne.qty}</th>
-                                <th scope="row">{ligne.idcrypto.price}</th>
-                                <th scope="row">{ligne.qty * ligne.idcrypto.price}</th>
+                                <th scope="row">{parseFloat(ligne.idcrypto.price).toFixed(4)}</th>
+                                <th scope="row">{parseFloat(ligne.qty * ligne.idcrypto.price).toFixed(4)}</th>
 
 
                             </tr>)
@@ -220,7 +220,7 @@ function WalletPage(props) {
                     }
                     </tbody>
                 </table>
-                <p style={{textAlign:"center"}}>Votre valeur total: {totalValueTempo}</p>
+                <p style={{textAlign:"center"}}>Votre valeur total: {totalValueTempo.toFixed(4)}</p>
             </div>
             <div id="ajoutCrypto">
                 <table className="">
