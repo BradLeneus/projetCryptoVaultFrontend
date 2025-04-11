@@ -36,7 +36,7 @@ function Navbar() {
     return (
         <div>
             {/*Modal*/}
-            <button type="button" id={"modalButton"} className="btn btn-primary invisible" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" id={"modalButton"} className="btn btn-primary collapse" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Launch demo modal
             </button>
             <div className="position-absolute top-50 start-50">

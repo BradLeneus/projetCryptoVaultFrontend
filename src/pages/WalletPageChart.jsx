@@ -7,7 +7,7 @@ function  Pie(props) {
 
 
     const options = {
-        title: "My Daily Activities",
+        title: "",
     };
     return (
         <div>

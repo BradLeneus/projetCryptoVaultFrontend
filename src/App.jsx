@@ -23,6 +23,7 @@ function App() {
         <BrowserRouter>
 
             <div>
+
                 <Navbar/>
                 <div>
                     <Routes>

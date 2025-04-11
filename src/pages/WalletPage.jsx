@@ -40,11 +40,14 @@ function WalletPage(props) {
         if(qty != 0){
             if(existingCrypto != ""){
                 if(listCryptoUser[id -1] != null){
+                    console.log(listCryptoUser[id-1])
+
                     if(qty <0){
                         if(listCryptoUser[id -1].qty + parseInt(qty)  >= 0 ){
                             setWallet( wallet.customer.id = parseInt(localId) )
                             setWallet(wallet.qty = listCryptoUser[id - 1].qty + parseFloat(qty))
                             setWallet(wallet.idcrypto.id= id)
+
                             axios.post("http://localhost:8586/wallet/newWallet", wallet)
                             // remet à zero sinon les élments vont se dupliquer lors du deuxieme renvoie.
                             setWallet({
@@ -57,7 +60,6 @@ function WalletPage(props) {
                                 },
                             })
 
-
                             // window.location.reload();
 
                         }
@@ -66,6 +68,7 @@ function WalletPage(props) {
                         setWallet( wallet.customer.id = parseInt(localId) )
                         setWallet(wallet.qty = listCryptoUser[id - 1].qty + parseFloat(qty))
                         setWallet(wallet.idcrypto.id= id)
+
                         axios.post("http://localhost:8586/wallet/newWallet", wallet)
                         // remet à zero sinon les élments vont se dupliquer lors du deuxieme renvoie.
                         setWallet({
@@ -84,6 +87,7 @@ function WalletPage(props) {
                         setWallet( wallet.customer.id = parseInt(localId) )
                         setWallet(wallet.qty = parseFloat(qty))
                         setWallet(wallet.idcrypto.id= id)
+                        
                         axios.post("http://localhost:8586/wallet/newWallet", wallet)
                         // remet à zero sinon les élments vont se dupliquer lors du deuxieme renvoie.
                         setWallet({
@@ -210,7 +214,7 @@ function WalletPage(props) {
                             <tr key={i}>
                                 <th>{i + 1}</th>
                                 <th id={ligne.idcrypto.name} scope="row">{ligne.idcrypto.name}</th>
-                                <th scope="row">{ligne.qty}</th>
+                                <th scope="row">{parseFloat(ligne.qty).toFixed(4)}</th>
                                 <th scope="row">{parseFloat(ligne.idcrypto.price).toFixed(4)}</th>
                                 <th scope="row">{parseFloat(ligne.qty * ligne.idcrypto.price).toFixed(4)}</th>
 
