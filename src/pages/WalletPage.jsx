@@ -87,7 +87,7 @@ function WalletPage(props) {
                         setWallet( wallet.customer.id = parseInt(localId) )
                         setWallet(wallet.qty = parseFloat(qty))
                         setWallet(wallet.idcrypto.id= id)
-                        
+
                         axios.post("http://localhost:8586/wallet/newWallet", wallet)
                         // remet à zero sinon les élments vont se dupliquer lors du deuxieme renvoie.
                         setWallet({
