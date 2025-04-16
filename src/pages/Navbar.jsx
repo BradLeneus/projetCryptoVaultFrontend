@@ -76,11 +76,11 @@ function Navbar() {
                 <form className="form-inline">
 
 
-                    <Link to="/">
+                    <Link to="/" style={{textDecoration: "none"}}>
                         <text className={"pagesName"}>Home</text>
                     </Link>
                     &nbsp;
-                    <Link to="/Trading">
+                    <Link to="/Trading" style={{textDecoration: "none"}}>
                         <text className={"pagesName"}>Trading Prices</text>
                     </Link>
                     &nbsp;
@@ -91,18 +91,18 @@ function Navbar() {
 
 
                     &nbsp;
-                    <Link to="/About">
+                    <Link to="/About" style={{textDecoration: "none"}}>
                         <text className={"pagesName"}>About</text>
                     </Link>
                     &nbsp;
 
-                    <Link to="/Song">
+                    <Link to="/Song" style={{textDecoration: "none"}}>
                         <text className={"pagesName"}>Songs</text>
                     </Link>
                     &nbsp;
                     {localStorage.getItem("idCustomer") != null ? <button className="navButton" onClick={SupprimerId}>logout</button> :<Link to="/Login">
                         <button className="m-2 my-2 navButton " type="button">Login</button>
-                    </Link>}
+                    </Link> }
                     {localStorage.getItem("idCustomer") != null ? null : <Link to="/SignUp">
                         <button className="m-2 my-2 navButton " type="button">Sign Up</button>
                     </Link>}

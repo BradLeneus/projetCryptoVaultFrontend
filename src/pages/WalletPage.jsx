@@ -14,7 +14,7 @@ function WalletPage(props) {
     const [filterList, setFilterList] = useState([])
     const nav = useNavigate();
     const [etat, setEtat] = useState(false)
-    const [listUser, setListUser] = useState([])
+    const [listCrypto, setListCrypto] = useState([])
     const [totalValueTempo, setTotalValueTempo] = useState(0)
     let totalValueLet = 0
     const [listCryptoUser, setListCryptoUser] = useState([])
@@ -37,8 +37,8 @@ function WalletPage(props) {
 
         let existingCrypto = document.getElementById(name)
         let qty = document.getElementById("input"+id).value
-        if(qty != 0){
-            if(existingCrypto != ""){
+        if(qty !== 0){
+            if(existingCrypto !== ""){
                 if(listCryptoUser[id -1] != null){
                     console.log(listCryptoUser[id-1])
 
@@ -121,6 +121,7 @@ function WalletPage(props) {
 
 
 
+
         }
         else {
             nav("/Login")
@@ -131,16 +132,16 @@ function WalletPage(props) {
     const getAllCrypto = async () =>{
         const result = await
         axios.get("http://localhost:8586/crypto/getall")
-        setListUser(result.data)
+        setListCrypto(result.data)
 
     }
 
     useEffect(() => {
-        getCryptoOfCustomer()
+            getCryptoOfCustomer()
             totalValueLet = 0
             listCryptoUser.forEach(myFunctionTotalValue)
 
-
+            console.log(listCryptoUser)
     },[listCryptoUser])
     useEffect(() => {
 
@@ -192,7 +193,7 @@ function WalletPage(props) {
 
     return (
         <div>
-                <WalletPageChart listUser = {filterList}/>
+                <WalletPageChart listCrypto = {filterList}/>
 
             <button id="changeDisplay" onClick={handleChange}>ajouter cryptos</button>
 
@@ -235,7 +236,7 @@ function WalletPage(props) {
                     </thead>
                     <tbody>
                     {
-                        listUser.map((ligne, i) => (
+                        listCrypto.map((ligne, i) => (
                             <tr key={i}>
 
 

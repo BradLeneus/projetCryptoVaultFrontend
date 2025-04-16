@@ -3,7 +3,7 @@ import { Chart } from "react-google-charts";
 
 function  Pie(props) {
 
-    let array = props.listUser
+    let array = props.listCrypto
 
 
     const options = {
@@ -14,6 +14,7 @@ function  Pie(props) {
 
             <Chart
                 chartType="PieChart"
+
                 data={array}
                 options={options}
                 width={"100%"}

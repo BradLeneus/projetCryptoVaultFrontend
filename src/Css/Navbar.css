@@ -9,6 +9,7 @@
     border-radius: 90px;
     background-color:#00222C ;
     color: white;
+
 }
 
 #nomApp{
@@ -18,12 +19,13 @@
     font-size: 32px;
     font-style: normal;
     font-weight: 500;
-    line-height: normal;
+    text-decoration: none;
 }
 
 .pagesName{
     color: white;
     font-size: 20px;
+
 }
 
 .pagesName:hover{

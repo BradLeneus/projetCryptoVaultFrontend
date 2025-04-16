@@ -10,7 +10,7 @@
     border-radius: 25px ;
     border-color: #00222C;
     padding: 5px;
-    background-color: lightgray;
+    background-color: blue;
 }
 .priceTag{
     text-align: center;
@@ -20,5 +20,6 @@
     margin-top: 200px;
 }
 .smallBox{
-height: 100px;
+    height: max-content;
+
 }

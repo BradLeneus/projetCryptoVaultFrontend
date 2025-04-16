@@ -9,9 +9,9 @@ import path from "node:path";
 
 function SignUp() {
     const [customer, setCustomer] = useState({
-        fname:"",
-        lname:"",
-        email:"",
+        fname:"ss",
+        lname:"ss",
+        email:"aa",
 
     }
 
@@ -24,6 +24,8 @@ function SignUp() {
     }
 
     const navigate = useNavigate();
+
+
     const isUsernameAlreadyTaken = async (name) =>{
         let text = document.getElementById("labelTakenUsername")
         const result = await axios.get(`http://localhost:8586/Customer/getByName/${name}`)
@@ -49,12 +51,7 @@ function SignUp() {
 
     const submitNewCustomer = (e) =>{
         e.preventDefault()
-        console.log(customer.fname)
         isUsernameAlreadyTaken(customer.fname)
-
-        // le premier / c'est le nom du controller => RequestMapping
-        // le deuxieme / c'est le mapping => PostMapping
-        // le port c'est pas le port de la bd c'est le port server.port dans app.prop
     }
     return (
         <div>

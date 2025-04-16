@@ -13,8 +13,8 @@ import Navbar from "./pages/Navbar.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import Login from "./pages/Login.jsx";
 import Footer from "./pages/Footer.jsx";
-import Profile from "./pages/Profile.jsx";
-import ViewCustomer from "./pages/ViewCustomer.jsx";
+
+
 import DataComp from "./pages/DataComp.jsx";
 import SongPage from "./pages/SongPage.jsx";
 
@@ -40,8 +40,8 @@ function App() {
                         <Route path="*" element={<NotFound/>}/>
                         <Route path="/Login" element={<Login/>}/>
                         <Route path="/Song" element={<SongPage/>}/>
-                        <Route path='/view/:id' element={<ViewCustomer />} />
-                        <Route path="/profile/:username" element={<Profile/>} />
+
+
                     </Routes>
                 </div>
 

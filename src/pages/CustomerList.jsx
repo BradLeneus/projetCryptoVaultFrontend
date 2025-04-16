@@ -17,8 +17,12 @@ function CustomerList() {
 
     }
     const supprimerCustomer = async (id) =>{
-
-        await axios.delete(`http://localhost:8586/Customer/deleteCustomer/${id}`)
+        if(id != 5){
+            await axios.delete(`http://localhost:8586/Customer/deleteCustomer/${id}`)
+        }
+        else {
+            console.log("ne peut pas supprimer un admin")
+        }
 
     }
 
@@ -34,8 +38,8 @@ function CustomerList() {
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">fame</th>
-                    <th scope="col">lame</th>
+                    <th scope="col">fname</th>
+
                     <th scope="col">Email</th>
                 </tr>
                 </thead>
@@ -45,8 +49,8 @@ function CustomerList() {
                         <tr key={i}>
                             <th scope="row">{ligne.id}</th>
                             <th scope="row">{ligne.fname}</th>
-                            <th scope="row">{ligne.lname}</th>
-                            {ligne.id == 5 ? null : <th>
+                            <th scope="row">{ligne.email}</th>
+                            {ligne.id === 5 ? null : <th>
                                 <button onClick={() =>{
                                     supprimerCustomer(ligne.id)
                                 }}>Supprimer</button>
