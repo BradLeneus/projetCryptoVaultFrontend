@@ -46,19 +46,21 @@ function CustomerList() {
                 <tbody>
                 {
                     listUser.map((ligne, i) => (
-                        <tr key={i}>
+                        <tr id={"tt"} key={i}>
                             <th scope="row">{ligne.id}</th>
                             <th scope="row">{ligne.fname}</th>
                             <th scope="row">{ligne.email}</th>
                             {ligne.id === 5 ? null : <th>
-                                <button onClick={() =>{
+                                <button className={"btnDelete"} onClick={() =>{
                                     supprimerCustomer(ligne.id)
                                 }}>Supprimer</button>
+
                             </th>}
                         </tr>))
                 }
                 </tbody>
             </table>
+
         </div>
     );
 }

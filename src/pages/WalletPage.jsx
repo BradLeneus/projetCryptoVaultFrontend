@@ -40,10 +40,10 @@ function WalletPage(props) {
         if(qty !== 0){
             if(existingCrypto !== ""){
                 if(listCryptoUser[id -1] != null){
-                    console.log(listCryptoUser[id-1])
+
 
                     if(qty <0){
-                        if(listCryptoUser[id -1].qty + parseInt(qty)  >= 0 ){
+                        if(listCryptoUser[id -1].qty + parseFloat(qty)  >= 0 ){
                             setWallet( wallet.customer.id = parseInt(localId) )
                             setWallet(wallet.qty = listCryptoUser[id - 1].qty + parseFloat(qty))
                             setWallet(wallet.idcrypto.id= id)
@@ -141,7 +141,7 @@ function WalletPage(props) {
             totalValueLet = 0
             listCryptoUser.forEach(myFunctionTotalValue)
 
-            console.log(listCryptoUser)
+
     },[listCryptoUser])
     useEffect(() => {
 
@@ -183,6 +183,7 @@ function WalletPage(props) {
         array[index + 1] = [item.idcrypto.name, item.qty * item.idcrypto.price]
 
     }
+
 
     function myFunctionTotalValue(item, index) {
         totalValueLet += item.qty * item.idcrypto.price

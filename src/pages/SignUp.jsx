@@ -94,7 +94,7 @@ function SignUp() {
                                        onChange={(e) => changement(e)}
                                 />
                             </div>
-                            <button type="submit" className="btn btn-primary">Submit</button>
+                            <button id="btnSignUp" type="submit" className="btn btn-primary">Submit</button>
 
                         </form>
                     </div>
