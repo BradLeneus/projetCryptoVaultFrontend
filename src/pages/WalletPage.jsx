@@ -196,7 +196,7 @@ function WalletPage(props) {
         <div>
                 <WalletPageChart listCrypto = {filterList}/>
 
-            <button id="changeDisplay" onClick={handleChange}>ajouter cryptos</button>
+            <button id={"changeDisplay"} onClick={handleChange}>ajouter cryptos</button>
 
             <div id="userCrypto">
                 <h1> TabUser</h1>
@@ -216,7 +216,7 @@ function WalletPage(props) {
                             <tr key={i}>
                                 <th>{i + 1}</th>
                                 <th id={ligne.idcrypto.name} scope="row">{ligne.idcrypto.name}</th>
-                                <th scope="row">{parseFloat(ligne.qty).toFixed(4)}</th>
+                                <th id={"qty" + ligne.id}  scope="row">{parseFloat(ligne.qty).toFixed(4)}</th>
                                 <th scope="row">{parseFloat(ligne.idcrypto.price).toFixed(4)}</th>
                                 <th scope="row">{parseFloat(ligne.qty * ligne.idcrypto.price).toFixed(4)}</th>
 
@@ -239,19 +239,11 @@ function WalletPage(props) {
                     {
                         listCrypto.map((ligne, i) => (
                             <tr key={i}>
-
-
                                 <th scope="row">{ligne.name}</th>
-
-
-                                <th><input type={"number"} style={{width: "80px"}} id={"input" + ligne.id}/></th>
+                                <th><input inputMode={"numeric"} type={"number"} style={{width: "80px"}} id={"input" + ligne.id}/></th>
                                 <th>
-                                    <button onClick={() => {
-                                        sendData(ligne.id, ligne.name)
-
-
-                                    }} className={"btn btn-primary"}
-                                            id={ligne.id}>Add
+                                    <button onClick={() => {sendData(ligne.id, ligne.name)
+                                    }} className={"btn btn-primary"} id={ligne.id}>Add
                                     </button>
                                 </th>
 
