@@ -40,8 +40,6 @@ function WalletPage(props) {
         if(qty !== 0){
             if(existingCrypto !== ""){
                 if(listCryptoUser[id -1] != null){
-
-
                     if(qty <0){
                         if(listCryptoUser[id -1].qty + parseFloat(qty)  >= 0 ){
                             setWallet( wallet.customer.id = parseInt(localId) )

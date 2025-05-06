@@ -3,54 +3,53 @@ import React, {useState} from 'react';
 function SongPage() {
     const listUrl = [
         {
-            URL:"https://www.youtube.com/watch?v=8P5WCI0iQlo",
-            Name:"Doigby - Guerrier ",
-            Text: "Ceci est une chanson de motivation"
+            URL:"https://www.youtube.com/watch?v=o0RE230PlX4",
+            Name:"Mr Crowley",
+
         },
         {
-            URL:"www1",
-            Name:"sss1",
-            Text: "C"
+            URL:"https://www.youtube.com/watch?v=O6QT8H9AZDM",
+            Name:"Numero 9",
+
         },
         {
-            URL:"www1",
-            Name:"sss1",
-            Text: "C"
+            URL:"https://www.youtube.com/watch?v=IwG-J0jtQgo",
+            Name:"eyes on fire",
+
         },
         {
-            URL:"www1",
-            Name:"sss1(Chanson Prog)",
-            Text: "C"
+            URL:"https://www.youtube.com/watch?v=E2Rj2gQAyPA",
+            Name:"The Line(Chanson Prog)",
+
         },
         {
-            URL:"www1",
-            Name:"sss1(Chanson Mariage)",
-            Text: "C"
+            URL:"https://www.youtube.com/watch?v=wp43OdtAAkM",
+            Name:"Running up that hill(Chanson Mariage)",
+
         },
         {
-            URL:"www1",
-            Name:"sss1",
-            Text: "C"
+            URL:"null",
+            Name:"null",
+
         },
         {
-            URL:"www1",
-            Name:"sss1",
-            Text: "C"
+            URL:"null",
+            Name:"null",
+
         },
         {
-            URL:"www1",
-            Name:"sss1",
-            Text: "C"
+            URL:"null",
+            Name:"null",
+
         },
         {
             URL:"https://www.youtube.com/watch?v=ylXk1LBvIqU",
             Name:"Miles Davis - So What (Chanson Prog)",
-            Text: "Petite Chanson de Jazz"
+
         },
         {
-            URL:"www1",
-            Name:"sss1(Chanson Mariage)",
-            Text: "C"
+            URL:"null",
+            Name:"null(Chanson Mariage)",
         },
 
 
@@ -69,7 +68,7 @@ function SongPage() {
                             <div className="card col-2" key={i}>
                                 <div className="card-body">
                                     <h5 className="card-title">{ligne.Name}</h5>
-                                    <p className="card-text">{ligne.Text}</p>
+
                                     <footer>
                                         <a href={ligne.URL} className="card-link">Lien Youtube</a> &nbsp;
                                         {i <= 4 ? "Samuel": "Bradley"}

@@ -43,7 +43,7 @@ function TradingPage(props) {
             <button onClick={getByPrice}>sort by price</button>
             <button onClick={getByName}>sort by name</button>
             <div className="AllCryptoBox row row-cols-1 row-cols-md-3 g-4">
-            {listCrypto.map((ligne, i) => (
+                {listCrypto.map((ligne, i) => (
 
                         <div className="col OneBox" key={i}>
                             <div className="card smallBox" >
@@ -62,12 +62,7 @@ function TradingPage(props) {
                             </div>
                     </div>)
                     )}
-
-        </div>
-
-
-
-
+            </div>
         </div>
     );
 }

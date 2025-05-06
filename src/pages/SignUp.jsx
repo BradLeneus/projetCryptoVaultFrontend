@@ -9,9 +9,9 @@ import path from "node:path";
 
 function SignUp() {
     const [customer, setCustomer] = useState({
-        fname:"ss",
-        lname:"ss",
-        email:"aa",
+        fname:"",
+        lname:"",
+        email:"",
 
     }
 

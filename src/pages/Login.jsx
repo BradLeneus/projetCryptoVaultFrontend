@@ -12,7 +12,7 @@ var customerid;
 function Login() {
 
     const navigate = useNavigate()
-    const [listUser, setListUser] = useState([])
+
 
 
 
@@ -25,7 +25,7 @@ function Login() {
 
 
        const result = await axios.get(`http://localhost:8586/Customer/getCustomer/${firstname}/${password}`)
-                setListUser(result.data);
+
                 customerid = result.data.id
 
 
