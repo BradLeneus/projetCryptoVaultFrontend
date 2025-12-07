@@ -6,6 +6,9 @@ Elle permet aux utilisateurs de consulter, ajouter et suivre leurs actifs numér
 
 Ce dépôt contient uniquement la partie **frontend** de l'application.
 
+ **Les maquettes  se trouvent dans le dossier `maquetteImage`.**
+
+
 ---
 
 ##  Stack utilisée
