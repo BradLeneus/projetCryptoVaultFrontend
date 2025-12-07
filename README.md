@@ -4,7 +4,7 @@
 CryptoVault est une **application web de gestion de portefeuille de cryptomonnaies**.  
 Elle permet aux utilisateurs de consulter, ajouter et suivre leurs actifs numériques grâce à une interface simple, moderne et intuitive.
 
-Ce dépôt contient uniquement la partie **frontend** de l'application.
+Ce dépôt contient uniquement la partie **frontend** de l'application. Voici le lien du backend : https://github.com/BradLeneus/projetCryptoVaultBackend/tree/dev
 
  **Les maquettes  se trouvent dans le dossier `maquetteImage`.**
 
