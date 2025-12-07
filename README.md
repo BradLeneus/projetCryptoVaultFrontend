@@ -11,7 +11,7 @@ Ce dépôt contient uniquement la partie **frontend** de l'application. Voici le
 
 ---
 
-##  Stack utilisée
+##  Technologies utilisées
 
 - React
 - Vite
